@@ -1,0 +1,5 @@
+#Deploy Harbor as the source registry to replicate images
+- hosts: src
+
+  tasks: 
+    - git: repo=git@github.com:vmware/harbor.git dest=/root/ version=HEAD
