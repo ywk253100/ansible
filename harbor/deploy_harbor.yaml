@@ -1,0 +1,22 @@
+# Clone codes of Harbor from github
+- name: clone Harbor from github
+  git: repo=https://github.com/vmware/harbor.git dest={{ path }}/harbor/ version={{ version }} accept_hostkey=yes force=yes
+- name: modify harbor.cfg
+  replace: dest={{ path }}/harbor/Deploy/harbor.cfg regexp='reg.mydomain.org' replace={{ ip }}
+- name: prepare
+  command: "{{ path }}/harbor/Deploy/prepare"
+  args: 
+    chdir: "{{ path }}/harbor/Deploy/"
+- name: build Harbor
+  command: docker-compose build
+  args:
+    chdir: "{{ path }}/harbor/Deploy/"
+- name: stop Harbor if exists
+  command: docker-compose stop
+  args:
+    chdir: "{{ path }}/harbor/Deploy/"
+  ignore_errors: yes
+- name: start Harbor
+  command: docker-compose up -d
+  args:
+    chdir: "{{ path }}/harbor/Deploy/"

@@ -1,7 +1,6 @@
-#Deploy Harbor as the source registry to replicate images
-- hosts: src
+#Deploy Harbor as the destination registry to replicate images
+- hosts: dst
   vars_files:
     - config.yaml
   tasks:
-#    - include: copy_data.yaml 
     - include: deploy_harbor.yaml path={{ harbor_path }} version={{ harbor_version }} ip={{ ansible_eth0.ipv4.address }}

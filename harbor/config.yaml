@@ -1,0 +1,3 @@
+#configuarion
+harbor_path: /root
+harbor_version: job-service
