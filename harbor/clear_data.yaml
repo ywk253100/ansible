@@ -1,0 +1,21 @@
+# Clear data
+- name: stop Harbor containers
+  command: "docker-compose stop"
+  args: 
+    chdir: "{{ path }}/harbor/Deploy/"
+  ignore_errors: yes
+- name: rm Harbor containers
+  command: docker-compose rm -f
+  args:
+    chdir: "{{ path }}/harbor/Deploy/"
+  ignore_errors: yes
+- name: cleare data
+  command: rm -r /data/
+  ignore_errors: yes
+- name: cleare log
+  command: rm -r /var/log/harbor/
+  ignore_errors: yes
+- name: start Harbor
+  command: docker-compose up -d
+  args:
+    chdir: "{{ path }}/harbor/Deploy/"

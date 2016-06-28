@@ -1,4 +1,0 @@
-#Copy registry and database data
-
-- name: copy data 
-  unarchive: src=data.tar.gz dest=/

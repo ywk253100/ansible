@@ -1,0 +1,6 @@
+#Clear data
+- hosts: dst
+  vars_files:
+    - config.yaml
+  tasks:
+    - include: clear_data.yaml path={{ harbor_path }} version={{ harbor_version }} ip={{ ansible_eth0.ipv4.address }}
