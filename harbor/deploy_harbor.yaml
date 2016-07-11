@@ -1,6 +1,6 @@
 # Clone codes of Harbor from github
 - name: clone Harbor from github
-  git: repo=https://github.com/ywk253100/harbor.git dest={{ path }}/harbor/ version={{ version }} accept_hostkey=yes force=yes
+  git: repo=https://github.com/vmware/harbor.git dest={{ path }}/harbor/ version={{ version }} accept_hostkey=yes force=yes
 - name: modify harbor.cfg
   replace: dest={{ path }}/harbor/Deploy/harbor.cfg regexp='reg.mydomain.org' replace={{ ip }}
 - name: prepare

@@ -9,10 +9,10 @@
   args:
     chdir: "{{ path }}/harbor/Deploy/"
   ignore_errors: yes
-- name: cleare data
+- name: clear data
   command: rm -r /data/
   ignore_errors: yes
-- name: cleare log
+- name: clear log
   command: rm -r /var/log/harbor/
   ignore_errors: yes
 - name: start Harbor
